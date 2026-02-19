@@ -161,7 +161,12 @@ def page_1():
         dok_qty= df[(df['bln_thn'] == pilihan) & (df['jenis'] == 'C')]
         pkt_qty= df[(df['bln_thn'] == pilihan) & (df['jenis'] == 'D')]
         
-        data_hasil= df.groupby(['kdprop']).apply(lambda x: x[x['bln_thn'] == pilihan]['konid'].count())
+        #data_hasil= df.groupby(['kdprop']).apply(lambda x: x[x['bln_thn'] == pilihan]['konid'].count())
+        data_hasil = df.groupby(['kdprop'], group_keys=False).apply(lambda x: x[x['bln_thn'] == pilihan]['konid'].count()
+)
+
+
+
         data_hasil = data_hasil.rename('total_konid').reset_index()
         max_konid = data_hasil['total_konid'].max()
 
@@ -308,7 +313,8 @@ def page_1():
                 values='no_status',
                 index=['kdmani'],
                 columns=['cluster_LT'],
-                aggfunc=np.sum
+                #aggfunc=np.sum
+                aggfunc='sum'
             ).fillna(0)
             
             # Merge dengan hasil2a

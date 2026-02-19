@@ -13,3 +13,11 @@ bokeh==3.6.1
 toml==0.10.2
 urllib3==2.6.3
 xyzservices==2025.11.0
+numpy==2.4.2
+shapely==2.1.2
+pyproj==3.7.2
+#fiona
+#descartes
+matplotlib==3.10.8
+folium=0,20.0
+streamlit-folium==0.26.1
