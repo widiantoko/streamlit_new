@@ -6,3 +6,4 @@ streamlit-option-menu==0.4.0
 pandas==2.3.3
 pandas-bokeh==0.5.5
 plotly==6.5.2
+geopandas==1.1.2
