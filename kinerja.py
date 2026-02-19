@@ -225,7 +225,7 @@ def page_1():
         pivot_2c['sum'] = pivot_2c.sum(axis=1)
         final = pivot_2c.sort_values("sum", ascending=False).head(12)
 
-        st.write(len(final))
+        st.dataframe(final)
         
         # Ambil kolom produk
         produk_cols = [col for col in final.columns if col not in ['pelanggan', 'sum']]
