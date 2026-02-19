@@ -243,7 +243,7 @@ def page_1():
         ph = figure(
             #y_range=final.index.tolist()[::-1],
             y_range=final.index.tolist()[:-1],
-            height=300,
+            height=275,
             width=300,
             tools="hover",
             tooltips="$name : @$name",
@@ -348,7 +348,7 @@ def page_1():
             # Buat figure
             pv = figure(
                 x_range=join_inner['kdmani'].tolist(),
-                height=300,
+                height=275,
                 width=300,
                 toolbar_location=None,
                 margin=(15, 0, 0, 0),  # (top, right, bottom, left) dalam pixel
