@@ -294,7 +294,11 @@ def page_1():
     ]
         choices = ['a. 0 - 3 hari', 'b. 4 - 7 hari', 'c. 8 - 14 hari', 
                'd. 15 - 30 hari', 'e. 31 - 60 hari', 'f. 61 hari - dst']
+        #datafr['cluster_LT'] = np.select(conditions, choices, default='f. 61 hari - dst')
+        # Pastikan Anda membuat copy terpisah
+        datafr = datafr.copy()  # Tambahkan ini sebelum memodifikasi
         datafr['cluster_LT'] = np.select(conditions, choices, default='f. 61 hari - dst')
+
 
 
         #st.dataframe(datafr.head(20))
