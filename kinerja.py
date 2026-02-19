@@ -249,7 +249,8 @@ def page_1():
             tools="hover",
             tooltips="$name : @$name",
             toolbar_location=None,
-            margin=(15, 0, 0, 0)
+            margin=(15, 0, 0, 0),
+            
         )
         
         # Horizontal bar stack
@@ -267,6 +268,7 @@ def page_1():
         ph.x_range = Range1d(0, upper_lmt)
         ph.legend.orientation = "horizontal"
         ph.add_layout(ph.legend[0], 'below')
+        ph.add_layout(title='SSSSS')
         ph.outline_line_color = None
         ph.legend.location = "bottom_center"
         
