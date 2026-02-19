@@ -204,6 +204,7 @@ def page_1():
         # Data untuk chart
         hasil2a = datafr.groupby("kdmani").size().reset_index(name='no_status').sort_values("no_status", ascending=False).head(12)
         hasil2c = datafr.groupby(["pelanggan", "kdproduk"]).size().reset_index(name='rekap').sort_values("rekap", ascending=False)
+        st.write(len(hasil2c))
 
         # Pivot table untuk produk
         pivot_2c = hasil2c.pivot_table(
