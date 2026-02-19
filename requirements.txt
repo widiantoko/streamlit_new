@@ -24,3 +24,4 @@ streamlit-folium==0.26.1
 altair==pip6.0.0
 mdurl==0.1.2
 option==2.1.0
+requests==2.31.0
