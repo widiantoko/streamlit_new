@@ -110,13 +110,6 @@ for file in provinsi_indonesia:
         st.error(f"❌ Gagal memuat {file}: {e}")
 
 
-    # Gabungkan semua GeoDataFrame
-    
-    #st.dataframe(gdf_gabungan[['provinsi', 'penduduk']].drop_duplicates())
-    
-    
-    
-    # Konversi ke GeoJSON
 
 
 
