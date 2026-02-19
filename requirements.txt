@@ -8,3 +8,8 @@ pandas-bokeh==0.5.5
 plotly==6.5.2
 geopandas==1.1.2
 mysql-connector-python==9.6.0
+jsonschema==4.26.0
+bokeh==3.6.1
+toml==0.10.2
+urllib3==2.6.3
+xyzservices==2025.11.0
