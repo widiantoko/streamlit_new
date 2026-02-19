@@ -261,7 +261,7 @@ def page_1():
         ph.hbar_stack(
             produk_cols,
             y='pelanggan',
-            height=0.7,
+            height=0.5,
             color=[wr.get(col, '#gray') for col in produk_cols],
             source=ColumnDataSource(final.reset_index()),
             legend_label=produk_cols
