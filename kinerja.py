@@ -167,6 +167,7 @@ def page_1():
 
         # Rename the 'Value' column to 'Count'
         #data_hasil = data_hasil.rename(columns={'Value': 'Count'})
+        print (df.info())
         
 
 

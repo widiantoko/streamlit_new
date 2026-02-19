@@ -7,3 +7,4 @@ pandas==2.3.3
 pandas-bokeh==0.5.5
 plotly==6.5.2
 geopandas==1.1.2
+mysql-connector-python==9.6.0
