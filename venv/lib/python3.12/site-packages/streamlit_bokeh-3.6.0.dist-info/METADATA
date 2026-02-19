@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: streamlit-bokeh
+Version: 3.6.0
+Summary: Streamlit component that allows you to render Bokeh charts
+Home-page: 
+Author: Streamlit
+Author-email: streamlitcommunity@snowflake.com
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: streamlit>=1.26
+Requires-Dist: bokeh==3.6.1
+Provides-Extra: devel
+Requires-Dist: wheel; extra == "devel"
+Requires-Dist: pytest==7.4.0; extra == "devel"
+Requires-Dist: playwright==1.48.0; extra == "devel"
+Requires-Dist: requests==2.31.0; extra == "devel"
+Requires-Dist: pytest-playwright-snapshot==1.0; extra == "devel"
+Requires-Dist: pytest-rerunfailures==12.0; extra == "devel"
+
+# streamlit-bokeh
+
+A custom component designed to follow the bokeh chart component
