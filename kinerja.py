@@ -64,8 +64,9 @@ def fetch_data(db_key="mysql01"):
 
 
 
-path='/Users/dodiwidiantoko/Documents/shiny_python/peta'
-
+#path='/Users/dodiwidiantoko/Documents/shiny_python/peta'
+# Harusnya menggunakan path relatif
+path = os.path.join(os.path.dirname(__file__), 'peta')  # ✅ BENAR
 
 provinsi_indonesia = ['11_aceh.geojson', '12_sumut.geojson','13_sumbar.geojson',
                       '14_riau.geojson','15_jambi.geojson','16_sumsel.geojson','18_lampung.geojson',
@@ -419,7 +420,7 @@ def page_1():
             except Exception as e:
                 st.error(f"❌ Gagal memuat {file}: {e}")
 
-        if gdf_list:
+        #gdf_list
         # Gabungkan semua GeoDataFrame
             gdf_gabungan = pd.concat(gdf_list, ignore_index=True)
         #st.dataframe(gdf_gabungan[['provinsi', 'penduduk']].drop_duplicates())
