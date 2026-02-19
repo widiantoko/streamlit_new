@@ -253,7 +253,7 @@ def page_1():
             tools="hover",
             tooltips="$name : @$name",
             toolbar_location=None,
-            margin=(15, 0, 0, 0),
+            margin=(10, 0, 0, 0),
             
         )
         
@@ -261,7 +261,7 @@ def page_1():
         ph.hbar_stack(
             produk_cols,
             y='pelanggan',
-            height=0.5,
+            height=0.7,
             color=[wr.get(col, '#gray') for col in produk_cols],
             source=ColumnDataSource(final.reset_index()),
             legend_label=produk_cols
