@@ -214,7 +214,7 @@ def page_1():
             aggfunc='sum'
         ).fillna(0)
 
-        st.write(len(pivot_2c))
+       
         
         # Rename kolom produk
         rename_map = {'N': 'Normal', 'U': 'Urgent', 'T': 'Top Urgent', 
@@ -224,6 +224,8 @@ def page_1():
         # Hitung total
         pivot_2c['sum'] = pivot_2c.sum(axis=1)
         final = pivot_2c.sort_values("sum", ascending=False).head(12)
+
+        st.write(len(final))
         
         # Ambil kolom produk
         produk_cols = [col for col in final.columns if col not in ['pelanggan', 'sum']]
