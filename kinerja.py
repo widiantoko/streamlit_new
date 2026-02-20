@@ -298,7 +298,7 @@ def page_1():
         text= f"Kiriman Belum Ada Status dari {top} Pelanggan Teratas",
         align="left",
         text_font_size="12pt",
-        #text_font_style="bold",
+        text_font_style="light",
         text_color="#36454F",
         background_fill_color="#f0f0f0",
         background_fill_alpha=0.15
