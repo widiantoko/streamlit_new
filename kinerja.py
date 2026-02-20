@@ -193,7 +193,7 @@ def page_1():
 
         st.markdown(f"""
                     <h4 style='font-size: 26px; margin-top: 25px; margin-left: 20px; color: #1565C0;'>{all} : {dok_pkt} </h4> """, 
-            unsafe_allow_html=True, text_alignment="left")   
+            unsafe_allow_html=True, text_alignment="center")   
 
 
     st.divider()
