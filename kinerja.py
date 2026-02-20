@@ -707,7 +707,7 @@ def page_3():
     pgab.add_tools(hover)
     #pgab.axis_label_text_font_size = '10px'
 
-    st.bokeh_chart(pgab)
+    streamlit_bokeh(pgab)
 
 
 
