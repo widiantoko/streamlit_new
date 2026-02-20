@@ -620,7 +620,7 @@ def page_2():
     return st.container()
 
 from bokeh.transform import dodge
-from bokeh.models import NumeralTickFormatter, FuncTickFormatter
+from bokeh.models import NumeralTickFormatter
 from bokeh.models import BoxEditTool, HoverTool
 
 def page_3():
