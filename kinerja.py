@@ -625,7 +625,7 @@ from bokeh.models import HoverTool
 
 def page_3():
     df = fetch_data2()
-    st.dataframe(df)
+    #st.dataframe(df)
 
 
     df.columns= ["tahun","bulan" ,"bln_thn", "qty_pcs", "berat_kg"]
@@ -686,8 +686,9 @@ def page_3():
 
 
     
-    pgab = figure(x_range=fruits, y_range=(0, 200000), title="Volume Berat Kiriman per Bulan Tahun 2024 - 2026",
-           height=350, width=1200, toolbar_location=None, )
+    pgab = figure(x_range=fruits, y_range=(0, 200000), 
+                  title="Volume Berat Kiriman per Bulan Tahun 2024 - 2026",
+                  height=350, width=1200, toolbar_location=None, )
     
 
     pgab.vbar(x=dodge('fruits', -0.30, range=pgab.x_range), top='2024', source=source,
