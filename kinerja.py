@@ -271,10 +271,10 @@ def page_1():
         text= f"Kiriman Belum Ada Status untuk {top} Pelanggan Teratas",
         align="center",
         text_font_size="14pt",
-        text_font_style="bold",
+        #text_font_style="bold",
         text_color="#36454F",
         background_fill_color="#f0f0f0",
-        background_fill_alpha=0.5
+        #background_fill_alpha=0.5
 )
 
         ph.title = title  # Set title object
@@ -404,7 +404,7 @@ def page_1():
             #text_font_style="bold",
             text_color="#0E0E0F",
             background_fill_color="#f0f0f0",
-            background_fill_alpha=0.15
+            #background_fill_alpha=0.15
 )
 
             pv.title = title  # Set title object
