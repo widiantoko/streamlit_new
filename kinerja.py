@@ -274,7 +274,7 @@ def page_1():
         text_font_style="bold",
         text_color="#36454F",
         background_fill_color="#f0f0f0",
-        background_fill_alpha=0.15
+        background_fill_alpha=0.10
 )
 
         ph.title = title  # Set title object
