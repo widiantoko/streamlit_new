@@ -191,10 +191,31 @@ def page_1():
         dok_pkt= f""" {len(dok_qty)} Dokumen + {len(pkt_qty)} Paket """
 
 
+        #st.markdown(f"""
+        #            <h4 style='font-size: 26px; margin-top: 25px; margin-left: 20px; color: #1565C0;'>{all} : {dok_pkt} </h4> """, 
+        #    unsafe_allow_html=True, text_alignment="center")   
+        
+
         st.markdown(f"""
-                    <h4 Jumlah Kiriman Belum Ada Status    <br/h4
-                    <h4 style='font-size: 26px; margin-top: 25px; margin-left: 20px; color: #1565C0;'>{all} : {dok_pkt} </h4> """, 
-            unsafe_allow_html=True, text_alignment="center")   
+    <div style='
+        border: 2px solid #1565C0;
+        padding: 10px;
+        margin: 10px;
+        display: inline-block;
+        border-radius: 0px;
+    '>
+        <h4 style='
+            font-size: 26px; 
+            margin: 0;
+            color: #1565C0;
+            line-height: 1.2;
+        '>
+            {all} :<br>{dok_pkt}
+        </h4>
+    </div>
+""", unsafe_allow_html=True)
+
+
 
 
     st.divider()
