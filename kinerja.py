@@ -279,7 +279,7 @@ def page_1():
             tools="hover",
             tooltips="$name : @$name",
             toolbar_location=None,
-            margin=(10, 0, 0, 0),
+            margin=(25, 0, 0, 0),
             
         )
         
@@ -401,7 +401,7 @@ def page_1():
                 height=275,
                 width=300,
                 toolbar_location=None,
-                margin=(15, 0, 0, 0),  # (top, right, bottom, left) dalam pixel
+                margin=(25, 0, 0, 0),  # (top, right, bottom, left) dalam pixel
                 tools="hover",
                 tooltips="$name @kdmani: @$name"
             )
