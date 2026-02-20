@@ -274,7 +274,7 @@ def page_1():
         #text_font_style="bold",
         text_color="#36454F",
         background_fill_color="#f0f0f0",
-        #background_fill_alpha=0.5
+        background_fill_alpha=0.15
 )
 
         ph.title = title  # Set title object
@@ -296,7 +296,7 @@ def page_1():
         ph.legend.spacing = 10
         ph.legend.border_line_width = 1
         ph.legend.border_line_color = "lightgray"
-        ph.legend.border_line_alpha = 0.5
+        ph.legend.border_line_alpha = 0.15
 
         streamlit_bokeh(ph, use_container_width=True)
 
@@ -404,7 +404,7 @@ def page_1():
             #text_font_style="bold",
             text_color="#0E0E0F",
             background_fill_color="#f0f0f0",
-            #background_fill_alpha=0.15
+            background_fill_alpha=0.15
 )
 
             pv.title = title  # Set title object
