@@ -194,10 +194,10 @@ def page_1():
         st.markdown(f""" <div style='
         border: 2px solid #1565C0;
         padding: 5px;
-        margin: 10px;
+        margin: 5px;
         display: inline-block;
         border-radius: 0px;'>
-                    <h4 style='font-size: 26px; margin-top: 25px; margin-left: 20px; color: #1565C0;'>{all} : {dok_pkt} </h4> """, 
+                    <h4 style='font-size: 26px; margin-top: 10px; margin-left: 20px; color: #1565C0;'>{all} : {dok_pkt} </h4> """, 
             unsafe_allow_html=True, text_alignment="center")   
         
 
