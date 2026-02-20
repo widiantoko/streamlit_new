@@ -333,6 +333,7 @@ def page_1():
             # Filter berdasarkan kdmani teratas
             listkdmani = hasil2a["kdmani"].tolist()
             hasil2b_filtered = hasil2b[hasil2b['kdmani'].isin(listkdmani)]
+            top_1=len(listkdmani)
             
             # Pivot table
             pivot_LT = hasil2b_filtered.pivot_table(
@@ -397,7 +398,7 @@ def page_1():
 
             # Tambahkan title sebagai objek terpisah
             title = Title(
-            text= f"Kiriman Ada Status untuk {top} Cabang/Agen Teratas",
+            text= f"Kiriman Belum Ada Status Di {top_1} Cabang/Agen Teratas",
             align="center",
             text_font_size="16pt",
             text_font_style="bold",
