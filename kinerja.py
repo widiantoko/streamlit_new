@@ -620,10 +620,7 @@ def page_2():
     return st.container()
 
 def page_3():
-
-    
-
-    df = fetch_data2
+    df = fetch_data2()
     st.dataframe(df)
     #return st.container()
 
