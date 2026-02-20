@@ -619,11 +619,13 @@ def page_1():
 def page_2():
     return st.container()
 
-from bokeh.transform import dodge
-from bokeh.models import NumeralTickFormatter
-from bokeh.models import HoverTool
+
 
 def page_3():
+
+    from bokeh.transform import dodge
+    from bokeh.models import NumeralTickFormatter
+    from bokeh.models import HoverTool
     df = fetch_data2()
     #st.dataframe(df)
 
