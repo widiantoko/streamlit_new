@@ -134,7 +134,7 @@ provinsi_indonesia = ['11_aceh.geojson', '12_sumut.geojson','13_sumbar.geojson',
                         '73_sulsel.geojson','74_sultra.geojson','75_gorontalo.geojson','76_sulbar.geojson',
                         '81_maluku.geojson','82_malut.geojson','91_papua.geojson','94_papua_tengah.geojson',
                         '92_papua_barat.geojson','93_papua_selatan.geojson','95_papua_pegunungan.geojson',
-                        '96_papua_barat_daya.geojson'
+                        '96_papua_barat_daya.geojson','34_DIY.geojson'
                         
 
                       ]
