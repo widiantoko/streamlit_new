@@ -268,13 +268,13 @@ def page_1():
         
         # Tambahkan title sebagai objek terpisah
         title = Title(
-        text= f"Kiriman Belum Ada Status untuk {top} Pelanggan by Produk",
+        text= f"Kiriman Belum Ada Status untuk {top} Pelanggan Teratas",
         align="center",
         text_font_size="14pt",
         text_font_style="bold",
         text_color="#1565C0",
         background_fill_color="#f0f0f0",
-        background_fill_alpha=0.3
+        background_fill_alpha=0.15
 )
 
         ph.title = title  # Set title object
@@ -394,6 +394,20 @@ def page_1():
             pv.legend.orientation = "horizontal"
             pv.add_layout(pv.legend[0], 'below')
             pv.outline_line_color = None
+
+            # Tambahkan title sebagai objek terpisah
+            title = Title(
+            text= f"Kiriman Belum Ada Status untuk {top} Pelanggan Teratas",
+            align="center",
+            text_font_size="14pt",
+            text_font_style="bold",
+            text_color="#1565C0",
+            background_fill_color="#f0f0f0",
+            background_fill_alpha=0.15
+)
+
+            pv.title = title  # Set title object
+
 
             # Margin di sekitar legend (jarak ke tepi plot)
             pv.legend.margin = 30
