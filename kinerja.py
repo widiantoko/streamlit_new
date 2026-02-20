@@ -400,8 +400,8 @@ def page_1():
             title = Title(
             text= f"Kiriman Belum Ada Status Di {top_1} Cabang/Agen Teratas",
             align="center",
-            text_font_size="16pt",
-            text_font_style="bold",
+            text_font_size="14pt",
+            #text_font_style="bold",
             text_color="#0E0E0F",
             background_fill_color="#f0f0f0",
             background_fill_alpha=0.15
