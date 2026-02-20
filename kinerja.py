@@ -272,7 +272,7 @@ def page_1():
         align="center",
         text_font_size="14pt",
         text_font_style="bold",
-        text_color="#3D3D3F",
+        text_color="#000000",
         background_fill_color="#f0f0f0",
         background_fill_alpha=0.15
 )
