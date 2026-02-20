@@ -621,7 +621,7 @@ def page_2():
 
 from bokeh.transform import dodge
 from bokeh.models import NumeralTickFormatter
-from bokeh.models import BoxEditTool, HoverTool
+from bokeh.models import HoverTool
 
 def page_3():
     df = fetch_data2()
