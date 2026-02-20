@@ -15,6 +15,7 @@ import geopandas as gpd
 import plotly.express as px
 import os
 import json
+from bokeh.models import Title
 
 st.set_page_config(page_title="CitoXpress", layout='wide')
 #st.set_page_config(page_title="Kiriman Ke Cabang dan Agen", layout='wide')
@@ -186,8 +187,6 @@ def page_1():
     with row1_col2:
 
          
-
-        
         all= f"{len(datafr)} Kiriman"
         dok_pkt= f""" {len(dok_qty)} Dokumen + {len(pkt_qty)} Paket """
 
@@ -225,7 +224,7 @@ def page_1():
         pivot_2c['sum'] = pivot_2c.sum(axis=1)
         final = pivot_2c.sort_values("sum", ascending=False).head(11)
 
-        st.write(len(final)-1)
+        top=(len(final)-1)
         
         # Ambil kolom produk
         produk_cols = [col for col in final.columns if col not in ['pelanggan', 'sum']]
@@ -267,6 +266,22 @@ def page_1():
             legend_label=produk_cols
         )
         
+        # Tambahkan title sebagai objek terpisah
+        title = Title(
+        text= f"Kiriman Belum Ada Status untuk {top} Pelanggan by Produk",
+        align="center",
+        text_font_size="14pt",
+        text_font_style="bold",
+        text_color="#1565C0",
+        background_fill_color="#f0f0f0",
+        background_fill_alpha=0.3
+)
+
+        ph.title = title  # Set title object
+
+
+
+
         # Styling
         ph.ygrid.grid_line_color = None
         ph.x_range = Range1d(0, upper_lmt)
