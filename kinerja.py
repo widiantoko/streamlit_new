@@ -665,7 +665,7 @@ def page_3():
 
 
     fruits = bulanku
-    years = tahunku
+    #years = tahunku
 
     dataku = {'fruits' : fruits,
         '2024'   : berat_2024,
