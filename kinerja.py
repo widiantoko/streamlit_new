@@ -295,9 +295,9 @@ def page_1():
         
         # Tambahkan title sebagai objek terpisah
         title = Title(
-        text= f"Kiriman Belum Ada Status untuk {top} Pelanggan Teratas",
+        text= f"Kiriman Belum Ada Status dari {top} Pelanggan Teratas",
         align="left",
-        text_font_size="14pt",
+        text_font_size="12pt",
         #text_font_style="bold",
         text_color="#36454F",
         background_fill_color="#f0f0f0",
@@ -427,7 +427,7 @@ def page_1():
             title = Title(
             text= f"Kiriman Belum Ada Status di {top_1} Cabang/Agen Teratas",
             align="center",
-            text_font_size="14pt",
+            text_font_size="12pt",
             #text_font_style="bold",
             text_color="#0E0E0F",
             background_fill_color="#f0f0f0",
