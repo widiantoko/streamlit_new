@@ -193,7 +193,7 @@ def page_1():
 
         st.markdown(f""" <div style='
         border: 2px solid #1565C0;
-        padding: 10px;
+        padding: 5px;
         margin: 10px;
         display: inline-block;
         border-radius: 0px;'>
