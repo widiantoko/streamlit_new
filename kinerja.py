@@ -46,8 +46,7 @@ def fetch_data(db_key="mysql01"):
         """
         
 
-        
-
+    
 
 
         with engine.connect() as conn:
@@ -114,11 +113,6 @@ def fetch_data2(db_key="mysql01"):
 
 
 
-
-
-
-
-
 #============ GeoJSON ========#
 
 
@@ -156,19 +150,13 @@ for file in provinsi_indonesia:
         
         # Tambahkan kolom
         gdf['provinsi'] = nama
-        #gdf['penduduk'] = data_penduduk.get(nama, 0)
-
         nama_prov = gdf['provinsi'].iloc[0]
-        #penduduk = gdf['penduduk'].iloc[0]
-        
+      
         gdf_list.append(gdf)
         #st.success(f"✅ {nama} berhasil dimuat")
         
     except Exception as e:
         st.error(f"❌ Gagal memuat {file}: {e}")
-
-
-
 
 
 
@@ -228,13 +216,8 @@ def page_1():
         data_hasil = data_hasil.rename('total_konid').reset_index()
         max_konid = data_hasil['total_konid'].max()
 
-        # Rename the 'Value' column to 'Count'
-        #data_hasil = data_hasil.rename(columns={'Value': 'Count'})
-        #print (df.info())
         
 
-
-        #data_hasil.columns = ['kdprop', 'jumlah_kiriman']
     
     if df.empty:
         st.warning("Tidak ada data untuk ditampilkan.")
@@ -257,26 +240,7 @@ def page_1():
             unsafe_allow_html=True, text_alignment="center")   
         
 
-        #st.markdown(f"""
-    #<div style='
-    #    border: 2px solid #1565C0;
-    #    padding: 10px;
-    #    margin: 10px;
-    #    display: inline-block;
-    #    border-radius: 0px;
-    #'>
-    #    <h4 style='
-    #        font-size: 26px; 
-    #        margin: 0;
-    #        color: #1565C0;
-    #        line-height: 1.2;
-    #    '>
-    #        {all} :<br>{dok_pkt}
-    #    </h4>
-    #</div>
-#""", unsafe_allow_html=True)
-
-
+       
 
 
     st.divider()
@@ -600,18 +564,6 @@ def page_1():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-        #st.markdown("---")
  
 
 
@@ -663,9 +615,6 @@ def page_3():
 
 
 
-
-
-
     fruits = bulanku
     #years = tahunku
 
@@ -688,7 +637,7 @@ def page_3():
 
 
     
-    pgab = figure(x_range=fruits, y_range=(0, 200000), 
+    pgab = figure(x_range=bulanku, y_range=(0, 200000), 
                   title="Volume Berat Kiriman per Bulan Tahun 2024 - 2026",
                   height=350, width=1200, toolbar_location=None, )
     
@@ -711,10 +660,6 @@ def page_3():
     #pgab.axis_label_text_font_size = '10px'
 
     streamlit_bokeh(pgab)
-
-
-
-
 
 
 
