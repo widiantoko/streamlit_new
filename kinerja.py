@@ -619,9 +619,107 @@ def page_1():
 def page_2():
     return st.container()
 
+from bokeh.transform import dodge
+from bokeh.models import NumeralTickFormatter, FuncTickFormatter
+from bokeh.models import BoxEditTool, HoverTool
+
 def page_3():
     df = fetch_data2()
     st.dataframe(df)
+
+
+    df.columns= ["tahun","bulan" ,"bln_thn", "qty_pcs", "berat_kg"]
+    df["qty_pcs"] = df[["qty_pcs"]].astype(int)
+    df["berat_kg"] = df[["berat_kg"]].astype(int)
+
+    df2024 = pd.read_csv('data/vol2024_2025_streamlit.csv', sep=',')
+    df_combined = pd.concat([df2024, df], ignore_index=True)
+    
+    #st.dataframe(datapage3)
+
+    data2024=df_combined[df_combined["tahun"]==2024]
+    data2025=df_combined[df_combined["tahun"]==2025]
+    data2026=df_combined[df_combined["tahun"]==2026]
+
+    bulanku = df_combined['bulan'].unique().tolist()
+    tahunku = df_combined['tahun'].unique().tolist()
+
+    #bln_thn_all=df_combined["bln_thn"].to_list()
+    #berat_all = df_combined["berat_kg"].to_list()
+
+    berat_2024=data2024["berat_kg"].to_list()
+    berat_2025=data2025["berat_kg"].to_list()
+    berat_2026=data2026["berat_kg"].to_list()
+
+ 
+    list_b = [0] * (12 -len(berat_2026))
+    berat_2026.extend(list_b)  # to make sure the length matches for plotting
+
+
+
+
+
+
+
+
+
+
+    fruits = bulanku
+    years = tahunku
+
+    dataku = {'fruits' : fruits,
+        '2024'   : berat_2024,
+        '2025'   : berat_2025,
+        '2026'   : berat_2026}
+
+    source = ColumnDataSource(dataku)
+
+    hover = HoverTool(
+    tooltips=[
+        ("Bulan", "@fruits"),
+        ("2024", "@2024{0,0}"),
+        ("2025", "@2025{0,0}"),
+        ("2026", "@2026{0,0}"),],
+          #formatters= {'@2024': 'printf', '@2025': 'printf', '@2026': 'printf'}, 
+          )
+
+
+
+    
+    pgab = figure(x_range=fruits, y_range=(0, 200000), title="Volume Berat Kiriman per Bulan Tahun 2024 - 2026",
+           height=350, width=1200, toolbar_location=None, )
+    
+
+    pgab.vbar(x=dodge('fruits', -0.30, range=pgab.x_range), top='2024', source=source,
+       width=0.28, color="#daf3ea", legend_label="2024")
+
+    pgab.vbar(x=dodge('fruits',  0.0,  range=pgab.x_range), top='2025', source=source,
+       width=0.28, color="#718dbf", legend_label="2025")
+
+    pgab.vbar(x=dodge('fruits',  0.30, range=pgab.x_range), top='2026', source=source,
+       width=0.28, color="#e84d61", legend_label="2026")
+
+    pgab.x_range.range_padding = 0.05
+    pgab.xgrid.grid_line_color = None
+    pgab.legend.location = "top_left"
+    pgab.legend.orientation = "horizontal"
+    pgab.yaxis.formatter = NumeralTickFormatter(format="0,0")
+    pgab.add_tools(hover)
+    #pgab.axis_label_text_font_size = '10px'
+
+    st.bokeh_chart(pgab)
+
+
+
+
+
+
+
+
+
+
+
+
     #return st.container()
 
 def page_4():
