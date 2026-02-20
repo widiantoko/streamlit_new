@@ -192,7 +192,7 @@ def page_1():
 
 
         st.markdown(f"""
-                    <h4 style='font-size: 30px; margin-top: 25px; color: #1565C0;'>{all} : {dok_pkt} </h4> """, 
+                    <h4 style='font-size: 26px; margin-top: 25px; color: #1565C0;'>{all} : {dok_pkt} </h4> """, 
             unsafe_allow_html=True, text_alignment="left")   
 
 
