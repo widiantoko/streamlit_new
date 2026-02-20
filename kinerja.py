@@ -45,6 +45,7 @@ def fetch_data(db_key="mysql01"):
               and jenis<>'I' and awbno<>' '
         """
         
+
         with engine.connect() as conn:
             df = pd.read_sql(query, conn)
         
@@ -65,8 +66,59 @@ def fetch_data(db_key="mysql01"):
 
 
 
-#path='/Users/dodiwidiantoko/Documents/shiny_python/peta'
-# Harusnya menggunakan path relatif
+
+def fetch_data2(db_key="mysql01"):
+    """Fungsi untuk mengambil data dari database"""
+    try:
+        with open("config.toml", "rb") as f:
+            config = tomllib.load(f)[db_key]
+        
+        url = f"mysql+mysqlconnector://{config['user']}:{config['password']}@{config['host']}:{config.get('port', 3306)}/{config['database']}"
+        engine = create_engine(url)
+        
+        
+
+        query_3="""
+    select year(tanggal) as tahun, MONTHNAME(tanggal) as bulan,  DATE_FORMAT(tanggal,'%b_%y') as bln_thn,
+    COUNT(konid) as qty_pcs, round(sum(berat),0) as berat_kg from 
+    tkonos where tanggal >='2025-10-01' and tanggal<=NOW() and kdpelanggan not like 'CBH17002%' and (kdpelanggan like 'CBH%' 
+    or kdpelanggan like 'CTG%' 
+    or kdpelanggan like 'CBO%' 
+    or kdpelanggan like 'CBK%') 
+    and kdproduk in ('N', 'U', 'T', 'D', 'P')
+    group by month(tanggal), year(tanggal)
+    order by year(tanggal), month(tanggal) asc
+    """
+
+
+
+        with engine.connect() as conn:
+            df = pd.read_sql(query_3, conn)
+        
+        if df.empty:
+            return pd.DataFrame(columns=['tahun', 'bulan', 'bln_thn', 'qty_pcs', 'berat_kg'])
+        
+        return df
+        
+    except Exception as e:
+        print(f"ERROR DATABASE: {e}")
+        return pd.DataFrame()
+
+
+
+    
+
+
+
+
+
+
+
+
+#============ GeoJSON ========#
+
+
+
 path = os.path.join(os.path.dirname(__file__), 'peta')  # ✅ BENAR
 
 provinsi_indonesia = ['11_aceh.geojson', '12_sumut.geojson','13_sumbar.geojson',
@@ -477,7 +529,7 @@ def page_1():
                 gdf['kdprop'] = kdprop
                 gdf ['total_konid'] = gdf['code'].map(data_hasil.set_index('kdprop')['total_konid']).fillna(0)
 
-                \
+                
                 gdf_list.append(gdf)
      
         
@@ -564,7 +616,9 @@ def page_2():
     return st.container()
 
 def page_3():
-    return st.container()
+    df = fetch_data2
+    st.dataframe(df)
+    #return st.container()
 
 def page_4():
     return st.container()
