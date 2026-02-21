@@ -515,13 +515,8 @@ def page_1():
     
         # Konversi ke GeoJSON
         geojson = json.loads(gdf_gabungan.to_json())
-
-
-
-
         #st.dataframe(gdf_gabungan.head(38)) 
-       
-
+    
         
     
         # Buat figure
@@ -544,7 +539,7 @@ def page_1():
         
         fig.update_geos(fitbounds="locations", visible=False)
         fig.update_layout(height=700, width=2000, margin=dict(l=0, r=0, t=0, b=0) )# Margin minimal
-        fig.update_layout(dragmode=False, title_x=0.24, title_y=0.95, title_font_size=20, title_font_color="#1565C0", 
+        fig.update_layout(dragmode=False, title_x=0.24, title_y=0.95, title_font_size=20, title_font_color="#0E0E0F", 
                           title_font_family="Arial",
         hoverlabel=dict(
         bgcolor="white",
