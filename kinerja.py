@@ -185,8 +185,10 @@ def page_1():
        
     
     with row1_col1:
-     
-                
+
+
+        st.markdown("### 📅 Pilih Bulan:")
+              
         st.markdown("""<h6 style='font-size: 20px; color: #1565C0; 
                     display: flex; align-items: center; margin-top: 10px; margin-bottom: 0px;             
                     '>Pilih Bulan:</h6>""", 
