@@ -832,8 +832,7 @@ def page_4():
     
 
     
-    #col1, col2 = st.columns([2, 10], gap="small")
-    #col3, col4 = st.columns([10, 2], gap="small")
+    
 
 
 
@@ -842,7 +841,7 @@ def page_4():
 
     with col1:
 
-        st.text(lst_cab)
+        #st.text(lst_cab)
         pil_cab=st.selectbox(label="**Pilih Cabang:**",options= lst_cab)
 
         #st.dataframe(datapage4[[datapage4.cabang==lst_cab]])
