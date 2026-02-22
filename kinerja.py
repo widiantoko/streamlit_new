@@ -799,26 +799,25 @@ def page_4():
     #datapage4 = fetch_data3(df, "mysql02")
     df = fetch_data3()
 
-    st.dataframe(df)
+    #st.dataframe(df)
 
 
 
-    #datapage4.columns = ['bulan', 'waktu', 'cabang','normal_kg', 'urgent_kg', 'top_urgent_kg', 'darat_kg', 'reg_kg', 'matrix_kg', 'total_kg','trip_trucking', 'inbound_kg']
+    df.columns = ['bulan', 'waktu', 'cabang','normal_kg', 'urgent_kg', 'top_urgent_kg', 'darat_kg', 'reg_kg', 'matrix_kg', 'total_kg','trip_trucking', 'inbound_kg']
 
-    #datapage4["cabang"] = datapage4[["cabang"]].astype(str)
-    #datapage4["normal_kg"] = datapage4[["normal_kg"]].astype(int)
-    #datapage4["urgent_kg"] = datapage4[["urgent_kg"]].astype(int)
-    #datapage4["top_urgent_kg"] = datapage4[["top_urgent_kg"]].astype(int)
-    #datapage4["darat_kg"] = datapage4[["darat_kg"]].astype(int)
-    #datapage4["reg_kg"] = datapage4[["reg_kg"]].astype(int)
-    #datapage4["total_kg"] = datapage4[["total_kg"]].astype(int)
-    #datapage4["matrix_kg"] = datapage4[["matrix_kg"]].astype(int)
-    #datapage4["trip_trucking"] = datapage4[["trip_trucking"]].astype(int)
-    #datapage4["inbound_kg"] = datapage4[["inbound_kg"]].astype(int)
-    #datapage4.style.hide(axis="index")
+    df["cabang"] = df[["cabang"]].astype(str)
+    df["normal_kg"] = df[["normal_kg"]].astype(int)
+    df['urgent_kg']= df[["urgent_kg"]].astype(int)
+    df["top_urgent_kg"] = df[["top_urgent_kg"]].astype(int)
+    df["reg_kg"] = df[["reg_kg"]].astype(int)
+    df["total_kg"] = df[["total_kg"]].astype(int)
+    df["matrix_kg"] = df[["matrix_kg"]].astype(int)
+    df["trip_trucking"] = df[["trip_trucking"]].astype(int)
+    df["inbound_kg"] = df[["inbound_kg"]].astype(int)
+    df.style.hide(axis="index")
     
-    #datapage4= datapage4.drop('waktu', axis=1) # axis=1 specifies column
-    #datapage4.reset_index(drop=True, inplace=True)
+    df= df.drop('waktu', axis=1) # axis=1 specifies column
+    df.reset_index(drop=True, inplace=True)
    
     #import st_aggid
     #from st_aggrid import AgGrid, GridOptionsBuilder
@@ -827,7 +826,7 @@ def page_4():
     
 
    
-    #lst_cab=datapage4["cabang"].drop_duplicates().sort_index(ascending=True)
+    lst_cab=df["cabang"].drop_duplicates().sort_index(ascending=True)
     #pilihan4=st.selectbox("Pilih Cabang", lst_cab, key="cabang")  
     
     
@@ -841,20 +840,20 @@ def page_4():
     col1, col2 = st.columns([2, 10], gap="small")
     col3, col4 = st.columns([10, 2], gap="small")
 
-    #with col1:
+    with col1:
 
-        #st.text(lst_cab)
-        #pil_cab=st.selectbox(label="**Pilih Cabang:**",options= lst_cab)
+        st.text(lst_cab)
+        pil_cab=st.selectbox(label="**Pilih Cabang:**",options= lst_cab)
 
         #st.dataframe(datapage4[[datapage4.cabang==lst_cab]])
-        #filter_dp4=datapage4[(datapage4.cabang==pil_cab)]
+        filter_dp4=df[(df.cabang==pil_cab)]
 
-        #filter_dp4.reset_index(drop=True, inplace=True)
+        filter_dp4.reset_index(drop=True, inplace=True)
 
 
-    #with col3:
+    with col3:
             
-        #st.dataframe(filter_dp4, hide_index=True)
+        st.dataframe(filter_dp4, hide_index=True)
         #st.dataframe(filter_dp4.style.hide(axis="index"))
     
 
