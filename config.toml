@@ -6,3 +6,11 @@ port = 3306
 database = "dmsnew"
 user = "dmsnew"
 password = "citojaya1243"
+
+
+[mysql02]
+host = "117.102.102.186"
+port = 3306
+database = "drsnew"
+user = "dmsnew"
+password = "citojaya1243"
