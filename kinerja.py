@@ -272,6 +272,7 @@ def page_1():
         # Hitung total
         pivot_2c['sum'] = pivot_2c.sum(axis=1)
         final = pivot_2c.sort_values("sum", ascending=False).head(11)
+        st.dataframe(final)
 
         top=(len(final)-1)
         
