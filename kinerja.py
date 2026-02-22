@@ -399,12 +399,25 @@ def page_1():
         pivot_2c = pivot_2c[kolom_ada]
 
 
-        
+        # Rename kolom produk
+        rename_map = {'N': 'Normal', 'U': 'Urgent', 'T': 'Top Urgent', 
+              'D': 'Darat', 'C': 'Trucking', 'P': 'Premium'}
+        pivot_2c.rename(columns=rename_map, inplace=True)
+
+        # URUTAN YANG DIINGINKAN
+        urutan_kolom = ['Darat', 'Normal', 'Urgent', 'Top Urgent', 'Trucking', 'Premium']
+
+        # SOLUSI 2: REINDEX DENGAN FILL_VALUE=0
+        pivot_2c = pivot_2c.reindex(columns=urutan_kolom, fill_value=0)
+
         # Hitung total
-        # Reindex dengan urutan baru
         pivot_2c['sum'] = pivot_2c.sum(axis=1)
         final = pivot_2c.sort_values("sum", ascending=False).head(11)
         st.dataframe(final)
+
+
+
+
 
         top=(len(final)-1)
         
