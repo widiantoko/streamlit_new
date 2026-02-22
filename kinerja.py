@@ -108,7 +108,7 @@ def fetch_data2(db_key="mysql01"):
         print(f"ERROR DATABASE (fetch_volume_data): {e}")
         return pd.DataFrame()
 
-def fetch_data2(db_key="mysql02"):
+def fetch_data3(db_key="mysql02"):
     """Fungsi untuk mengambil data volume kiriman"""
     try:
         with open("config.toml", "rb") as f:
