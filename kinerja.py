@@ -390,7 +390,8 @@ def page_1():
 
 
         # Urutkan kolom sesuai keinginan (Darat, Normal, Urgent, Top Urgent)
-        kolom_urutan = ['Darat', 'Normal', 'Urgent', 'Top Urgent', 'Trucking', 'Premium']
+        #kolom_urutan = ['Darat', 'Normal', 'Urgent', 'Top Urgent', 'Trucking', 'Premium']
+        kolom_urutan = ['Darat', 'Normal', 'Urgent', 'Top Urgent']
         # Hanya ambil kolom yang ada di pivot
         kolom_final = [col for col in kolom_urutan if col in pivot_2c.columns]
 
