@@ -790,9 +790,9 @@ def page_3():
 def page_4():
 
     #datapage4 = fetch_data3(df, "mysql02")
-    datapage4 = fetch_data3()
+    df = fetch_data3()
 
-    st.dataframe(datapage4)
+    st.dataframe(df)
 
 
 
@@ -820,7 +820,7 @@ def page_4():
     
 
    
-    lst_cab=datapage4["cabang"].drop_duplicates().sort_index(ascending=True)
+    #lst_cab=datapage4["cabang"].drop_duplicates().sort_index(ascending=True)
     #pilihan4=st.selectbox("Pilih Cabang", lst_cab, key="cabang")  
     
     
@@ -834,21 +834,21 @@ def page_4():
     col1, col2 = st.columns([2, 10], gap="small")
     col3, col4 = st.columns([10, 2], gap="small")
 
-    with col1:
+    #with col1:
 
         #st.text(lst_cab)
-        pil_cab=st.selectbox(label="**Pilih Cabang:**",options= lst_cab)
+        #pil_cab=st.selectbox(label="**Pilih Cabang:**",options= lst_cab)
 
         #st.dataframe(datapage4[[datapage4.cabang==lst_cab]])
-        filter_dp4=datapage4[(datapage4.cabang==pil_cab)]
+        #filter_dp4=datapage4[(datapage4.cabang==pil_cab)]
 
-        filter_dp4.reset_index(drop=True, inplace=True)
+        #filter_dp4.reset_index(drop=True, inplace=True)
 
 
-    with col3:
+    #with col3:
             
         #st.dataframe(filter_dp4, hide_index=True)
-        st.dataframe(filter_dp4.style.hide(axis="index"))
+        #st.dataframe(filter_dp4.style.hide(axis="index"))
     
 
 
