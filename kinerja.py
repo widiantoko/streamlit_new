@@ -384,17 +384,14 @@ def page_1():
         rename_map = {'N': 'Normal', 'U': 'Urgent', 'T': 'Top Urgent', 
                       'D': 'Darat', 'C': 'Trucking', 'P': 'Premium'}
         pivot_2c.rename(columns=rename_map, inplace=True)
-        # Urutkan kolom secara manual
-        #pivot_2c = pivot_2c[['Darat', 'Normal', 'Urgent', 'Top Urgent']]
-
+        
+        
 
 
         # Urutkan kolom sesuai keinginan (Darat, Normal, Urgent, Top Urgent)
-        #kolom_urutan = ['Darat', 'Normal', 'Urgent', 'Top Urgent', 'Trucking', 'Premium']
-        urutan_kolom = ['Darat', 'Normal', 'Urgent', 'Top Urgent']
-        # Hanya ambil kolom yang ada di pivot
-        #kolom_final = [col for col in kolom_urutan if col in pivot_2c.columns]
-
+        urutan_kolom = ['Darat', 'Normal', 'Urgent', 'Top Urgent', 'Trucking', 'Premium']
+        
+        
         # Hanya ambil kolom yang ADA di dataframe
         kolom_ada = [col for col in urutan_kolom if col in pivot_2c.columns]
 
@@ -405,10 +402,9 @@ def page_1():
         
         # Hitung total
         # Reindex dengan urutan baru
-        #pivot_2c = pivot_2c[kolom_final]
         pivot_2c['sum'] = pivot_2c.sum(axis=1)
         final = pivot_2c.sort_values("sum", ascending=False).head(11)
-        #st.dataframe(final)
+        st.dataframe(final)
 
         top=(len(final)-1)
         
