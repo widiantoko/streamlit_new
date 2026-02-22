@@ -792,23 +792,26 @@ def page_4():
     #datapage4 = fetch_data3(df, "mysql02")
     datapage4 = fetch_data3()
 
+    st.dataframe(datapage4)
 
-    datapage4.columns = ['bulan', 'waktu', 'cabang','normal_kg', 'urgent_kg', 'top_urgent_kg', 'darat_kg', 'reg_kg', 'matrix_kg', 'total_kg','trip_trucking', 'inbound_kg']
 
-    datapage4["cabang"] = datapage4[["cabang"]].astype(str)
-    datapage4["normal_kg"] = datapage4[["normal_kg"]].astype(int)
-    datapage4["urgent_kg"] = datapage4[["urgent_kg"]].astype(int)
-    datapage4["top_urgent_kg"] = datapage4[["top_urgent_kg"]].astype(int)
-    datapage4["darat_kg"] = datapage4[["darat_kg"]].astype(int)
-    datapage4["reg_kg"] = datapage4[["reg_kg"]].astype(int)
-    datapage4["total_kg"] = datapage4[["total_kg"]].astype(int)
-    datapage4["matrix_kg"] = datapage4[["matrix_kg"]].astype(int)
-    datapage4["trip_trucking"] = datapage4[["trip_trucking"]].astype(int)
-    datapage4["inbound_kg"] = datapage4[["inbound_kg"]].astype(int)
+
+    #datapage4.columns = ['bulan', 'waktu', 'cabang','normal_kg', 'urgent_kg', 'top_urgent_kg', 'darat_kg', 'reg_kg', 'matrix_kg', 'total_kg','trip_trucking', 'inbound_kg']
+
+    #datapage4["cabang"] = datapage4[["cabang"]].astype(str)
+    #datapage4["normal_kg"] = datapage4[["normal_kg"]].astype(int)
+    #datapage4["urgent_kg"] = datapage4[["urgent_kg"]].astype(int)
+    #datapage4["top_urgent_kg"] = datapage4[["top_urgent_kg"]].astype(int)
+    #datapage4["darat_kg"] = datapage4[["darat_kg"]].astype(int)
+    #datapage4["reg_kg"] = datapage4[["reg_kg"]].astype(int)
+    #datapage4["total_kg"] = datapage4[["total_kg"]].astype(int)
+    #datapage4["matrix_kg"] = datapage4[["matrix_kg"]].astype(int)
+    #datapage4["trip_trucking"] = datapage4[["trip_trucking"]].astype(int)
+    #datapage4["inbound_kg"] = datapage4[["inbound_kg"]].astype(int)
     #datapage4.style.hide(axis="index")
     
-    datapage4= datapage4.drop('waktu', axis=1) # axis=1 specifies column
-    datapage4.reset_index(drop=True, inplace=True)
+    #datapage4= datapage4.drop('waktu', axis=1) # axis=1 specifies column
+    #datapage4.reset_index(drop=True, inplace=True)
    
     #import st_aggid
     from st_aggrid import AgGrid, GridOptionsBuilder
