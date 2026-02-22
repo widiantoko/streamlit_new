@@ -268,6 +268,9 @@ def page_1():
         rename_map = {'N': 'Normal', 'U': 'Urgent', 'T': 'Top Urgent', 
                       'D': 'Darat', 'C': 'Trucking', 'P': 'Premium'}
         pivot_2c.rename(columns=rename_map, inplace=True)
+        # Urutkan kolom secara manual
+        pivot_2c = pivot_2c[['Darat', 'Normal', 'Urgent', 'Top Urgent', 'Trucking', 'Premium']]
+
         
         # Hitung total
         pivot_2c['sum'] = pivot_2c.sum(axis=1)
