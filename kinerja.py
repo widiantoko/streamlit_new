@@ -269,7 +269,7 @@ def page_1():
                       'D': 'Darat', 'C': 'Trucking', 'P': 'Premium'}
         pivot_2c.rename(columns=rename_map, inplace=True)
         # Urutkan kolom secara manual
-        pivot_2c = pivot_2c[['Darat', 'Normal', 'Urgent', 'Top Urgent', 'Trucking', 'Premium']]
+        pivot_2c = pivot_2c[['Darat', 'Normal', 'Urgent', 'Top Urgent']]
 
         
         # Hitung total
