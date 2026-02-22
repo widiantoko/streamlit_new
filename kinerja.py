@@ -108,8 +108,124 @@ def fetch_data2(db_key="mysql01"):
         print(f"ERROR DATABASE (fetch_volume_data): {e}")
         return pd.DataFrame()
 
+def fetch_data2(db_key="mysql02"):
+    """Fungsi untuk mengambil data volume kiriman"""
+    try:
+        with open("config.toml", "rb") as f:
+            config = tomllib.load(f)[db_key]
+        
+        url = f"mysql+mysqlconnector://{config['user']}:{config['password']}@{config['host']}:{config.get('port', 3306)}/{config['database']}"
+        engine = create_engine(url)
 
+
+
+        query_4="""
     
+        SELECT 
+    o.bulan,
+		now() as waktu,
+    o.cabang,
+		o.normal_kg,
+		o.urgent_kg,
+		o.top_urgent_kg,
+		o.darat_kg,
+    o.outbound_kg_reg,
+		o.outbound_kg_mtx,
+		o.total_outbound_kg,
+		o.trip_trucking,
+    i.inbound_kg
+FROM
+(
+    -- Subquery untuk outbound
+    SELECT 
+        bulan, 
+        asal_new AS cabang,
+				SUM(CASE WHEN (kdproduk='N' AND reg_mtx='REG')THEN berat ELSE 0 END) AS normal_kg,
+				SUM(CASE WHEN (kdproduk='U' AND reg_mtx='REG') THEN berat ELSE 0 END) AS urgent_kg,
+				SUM(CASE WHEN (kdproduk='T' AND reg_mtx='REG')THEN berat ELSE 0 END) AS top_urgent_kg,
+				SUM(CASE WHEN (kdproduk='D' AND reg_mtx='REG') THEN berat ELSE 0 END) AS darat_kg, 
+        SUM(CASE WHEN (kdproduk IN ('N', 'U', 'T', 'D') AND reg_mtx='REG') THEN berat ELSE 0 END) AS outbound_kg_reg,
+				sum(case when (kdproduk in ('N', 'U', 'T', 'D') and reg_mtx ='MTX') then berat else 0 end) as outbound_kg_mtx,
+				sum(case when kdproduk in ('N', 'U', 'T', 'D') then berat else 0 end) as total_outbound_kg,			
+				sum(case when kdproduk='C' then 1 else 0 end) as trip_trucking
+
+    FROM
+    (
+        -- Data pengiriman keluar
+        SELECT 
+            DATE_FORMAT(tanggal, "%b-%y") AS bulan, tanggal,
+            konid, kdpelanggan,
+            pengirim, penerima, tujuan,
+            kdproduk, asal, 
+            if(left(kdpelanggan,3) in ('CTG','CBK', 'CBO'),'CBH', left(kdpelanggan,3) ) AS asal_new,
+						IF(left(kdpelanggan,3)= IF(asal='CBM', 'CBH', asal),'REG','MTX') as reg_mtx,
+            koli, berat, kdmani, 
+            IF(kdmani IN ('RAX', 'REX', 'CLT', 'SAP'), 'CBD', Kdmani) AS kdmani_new,
+            awbno, 
+						createdby
+        FROM tkonos
+        WHERE tanggal >= '2025-09-01' AND tanggal <= NOW()
+            AND kdpelanggan NOT LIKE 'CBD18002%'
+            and kdpelanggan NOT LIKE 'CSG18002%'
+            and kdpelanggan NOT LIKE 'CSB18002%'
+            and kdpelanggan NOT LIKE 'CBH17002%'
+            and kdpelanggan NOT LIKE 'CML18002%'
+            and kdpelanggan NOT LIKE 'CDP18002%'
+						#and left(kdpelanggan,3) ='CML'
+						#and IF(left(kdpelanggan,3)= IF(asal='CBM', 'CBH', asal),'REG','MTX')='MTX'
+            AND left(kdpelanggan,3) IN ('CBH','CBM','CBD', 'CSB', 'CSG', 'CML', 'CDP', 'CBK','CBO','CTG')
+    ) AS new1
+    GROUP BY bulan, asal_new
+		
+) AS o
+LEFT JOIN
+(
+    -- Subquery untuk inbound
+    SELECT 
+        bulan, 
+        kdmani_new AS cabang,
+        SUM(CASE WHEN kdproduk IN ('N', 'U', 'T', 'D') THEN berat ELSE 0 END) AS inbound_kg
+    FROM
+    (
+        -- Data penerimaan masuk
+        SELECT 
+            DATE_FORMAT(tanggal, "%b-%y") AS bulan,
+            konid, kdpelanggan, nott,           
+            jenis, tanggal, pengirim, penerima, tujuan,
+            kdproduk, asal, 
+            IF(asal='CBM', 'CBH', asal) AS asal_new,
+            koli, berat, kdmani,
+            IF(kdmani IN ('RAX', 'REX', 'CLT', 'SAP'), 'CBD', 
+               IF(kdmani IN ('CBK', 'CBO', 'CTG'), 'CBH', kdmani)) AS kdmani_new,
+            awbno, createdby
+        FROM tkonos
+        WHERE tanggal >= '2025-09-01' AND tanggal <= NOW()
+            AND kdpelanggan NOT LIKE 'CBD18002%'
+            AND kdpelanggan NOT LIKE 'CSG18002%'
+            AND kdpelanggan NOT LIKE 'CSB18002%'
+            AND kdpelanggan NOT LIKE 'CBH17002%'
+            AND kdpelanggan NOT LIKE 'CML18002%'
+            AND kdpelanggan NOT LIKE 'CDP18002%'         
+    ) AS new2
+    GROUP BY bulan, kdmani_new
+) AS i
+ON o.bulan = i.bulan AND o.cabang = i.cabang;
+
+            
+            
+    """
+
+
+        with engine.connect() as conn:
+            df = pd.read_sql(query_4, conn)
+        
+        return df
+        
+    except Exception as e:
+        print(f"ERROR DATABASE (fetch_volume_data): {e}")
+        return pd.DataFrame()
+
+
 
 
 
