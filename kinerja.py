@@ -814,7 +814,7 @@ def page_4():
     #datapage4.reset_index(drop=True, inplace=True)
    
     #import st_aggid
-    from st_aggrid import AgGrid, GridOptionsBuilder
+    #from st_aggrid import AgGrid, GridOptionsBuilder
 
     
     
