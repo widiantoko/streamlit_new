@@ -785,6 +785,10 @@ def page_3():
 
     streamlit_bokeh(pgab)
 
+    tz_offset = timezone(timedelta(hours=7))  # UTC+7 for Asia/Jakarta
+    hari_ini = datetime.now(tz_offset).strftime("%d-%m-%Y | %H:%M:%S")
+    st.markdown( f" :green[{hari_ini}] ")
+
 
 
 
