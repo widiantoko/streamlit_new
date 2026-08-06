@@ -164,7 +164,7 @@ FROM
             awbno, 
 						createdby
         FROM tkonos
-        WHERE tanggal >= '2025-09-01' AND tanggal <= NOW()
+        WHERE tanggal >= '2026-01-01' AND tanggal <= NOW()
             AND kdpelanggan NOT LIKE 'CBD18002%'
             and kdpelanggan NOT LIKE 'CSG18002%'
             and kdpelanggan NOT LIKE 'CSB18002%'
